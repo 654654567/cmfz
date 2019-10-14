@@ -124,6 +124,7 @@ public class CmfzApplicationTests {
     public void test5() {
         System.out.println("asdsahkjldla");
         System.out.println("sfsafsa");
+        System.out.println("sfsafsa");
     }
 
 }
