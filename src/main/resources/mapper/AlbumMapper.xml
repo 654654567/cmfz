@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.baizhi.mapper.AlbumMapper">
+    <select id="queryAll" resultType="Album">
+        select * from album limit #{start},#{rows}
+    </select>
+    <select id="count" resultType="Integer">
+        select count(id) from album
+    </select>
+
+    <insert id="insert" parameterType="Album">
+        insert into album values (#{id},#{title},#{score},#{author},#{broadcast},#{chapter_count},#{context},#{state},#{create_time},#{url})
+    </insert>
+
+    <update id="updateURL" parameterType="Album">
+        update album set url = #{url}  where id = #{id}
+    </update>
+
+    <update id="update" parameterType="Album">
+        update album set title = #{title} , score = #{score},author = #{author},broadcast = #{broadcast},
+        context = #{context},state = #{state}
+          where id = #{id} ;
+    </update>
+
+    <delete id="del">
+        delete from album
+        where id in
+        <foreach collection="array" item="id" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </delete>
+
+    <update id="updateCount" parameterType="Album">
+        update album set chapter_count = #{chapter_count}  where id = #{id}
+    </update>
+
+</mapper>

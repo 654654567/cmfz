@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.baizhi.mapper.BannerMapper">
+    <select id="queryAll" resultType="Banner">
+        select * from img LIMIT #{start},#{row}
+    </select>
+
+
+    <insert id="insert" parameterType="com.baizhi.entity.Banner">
+        insert into img values (#{id},#{name},#{context},#{create_date},#{state},#{url})
+    </insert>
+
+    <update id="updateURL" parameterType="com.baizhi.entity.Banner">
+        update img set url=#{url} where id = #{id}
+    </update>
+
+    <select id="count" resultType="java.lang.Integer">
+        select count(id) from img
+    </select>
+
+    <update id="update" parameterType="com.baizhi.entity.Banner">
+        update img set `name` = #{name},context = #{context},state = #{state} where id = #{id}
+    </update>
+    <delete id="delete">
+        delete from img
+        where id in
+        <foreach collection="array" item="id" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </delete>
+
+    <delete id="">
+        delete * from chapter where album_id = #{id}
+    </delete>
+
+</mapper>
