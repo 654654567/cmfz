@@ -123,6 +123,7 @@ public class CmfzApplicationTests {
     @Test
     public void test5() {
         System.out.println("asdsahkjldla");
+        System.out.println("sfsafsa");
     }
 
 }
